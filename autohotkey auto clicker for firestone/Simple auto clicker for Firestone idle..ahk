@@ -1,0 +1,4687 @@
+﻿#SingleInstance, Force
+SetWorkingDir %A_ScriptDir%
+
+IniRead, dragon, Settings.ini, GUI_Settings, vdragon,
+IniRead, dust, Settings.ini, GUI_Settings, vdust,
+IniRead, coin, Settings.ini, GUI_Settings, vCoin,
+IniRead, Grace, Settings.ini, GUI_Settings, vGrace,
+IniRead, Vermilion, Settings.ini, GUI_Settings, vVermilion,
+IniRead, Ankaa, Settings.ini, GUI_Settings, vAnkaa,
+IniRead, Azhar, Settings.ini, GUI_Settings, vAzhar,
+IniRead, Expedition, Settings.ini, GUI_Settings, vExpedition,
+IniRead, Special, Settings.ini, GUI_Settings, vSpecial,
+IniRead, Pc, Settings.ini, GUI_Settings, vPc,
+IniRead, New, Settings.ini, GUI_Settings, vNew,
+IniRead, Breaknormal, Settings.ini, GUI_Settings, vBreaknormal,
+IniRead, Break30, Settings.ini, GUI_Settings, vBreak30,
+IniRead, Break60, Settings.ini, GUI_Settings, vBreak60,
+IniRead, Breakskip, Settings.ini, GUI_Settings, vBreakskip,
+IniRead, longmission, Settings.ini, GUI_Settings, vlongmission,
+
+
+
+
+
+
+
+
+Gui, 1: Add, Picture, w530 h500 y-25, Images\firestone.png
+
+
+Gui, 1:  +LastFound +AlwaysOnTop +ToolWindow
+Gui, 1:  Color,black
+Gui, 1: Font,s11
+
+Gui,1: add, Text,center cgreen x180 y265 w190 h35, shadow/naval/titan may not work. to low lvl test
+Gui, 1: Font,cRed
+Gui, 1: Font,s14
+Gui, Add, Text,center cgreen  x380 y0 w165 h32 , Alchemy:
+Gui, 1:Font, s10
+Gui, 1: Add, Checkbox,  x380 y30 w165 h25 vDragon Checked%dragon%, Don't Use Dragon blood
+Gui, 1: Add, Checkbox,   x380 y55 w165 h25   vDust Checked%dust% , Don't Use Dust
+Gui, 1: Add, Checkbox,  x380 y80 w165 h25  vCoin Checked%coin%, Don't Use Exotic Coins
+Gui, 1: Font,s16
+Gui,1: add, Text, center  x175 y0  h105 w205,`nSimple`nAuto Clicker`nfor`n
+Gui,1: add, Text, +BackgroundTrans x450 y290, V.9.0.3
+Gui, 1: Font,s14
+Gui,1: add, Text,center cgreen x10 y0 w165 h25,Guardian To Train:
+Gui, 1:Font, s9
+Gui,1: add, radio, vRadio1 x10 y25 w165  h20      vGrace   Checked%Grace%            , Grace /Vermilion Old/New
+Gui,1: add, radio,         x10 y45  w165   h20     vVermilion  Checked%Vermilion%   , Vermilion /Grace Old/New
+Gui, 1:Font, s10
+Gui,1: add, radio,        x10 y65    w165   h20   vAnkaa   Checked%Ankaa%          ,      Ankaa
+Gui,1: add, radio,         x10 y85   w165   h20  vAzhar   Checked%Azhar%             ,     Azhar
+
+Gui, 1: Font,s12
+Gui,1: add, Text,center cgreen x10 y485 w190 h25,Break Selection
+Gui, 1:Font, s9
+Gui,1: add, radio, vRadio3 x10 y507 w100 h20         vBreaknormal  Checked%Breaknormal%, Climbing
+Gui,1: Add, radio,         x10 y527 w100 h20         vBreak30 Checked%Break30% , Break 30
+Gui,1: Add, radio,         x100 y527 w100 h20         vBreak60 Checked%Break60% , Break 60
+Gui,1: Add, radio,         x100 y507 w100 h20        vBreakskip Checked%Breakskip% , Skip Break
+
+Gui, 1: Font,s12
+Gui,1: add, Text,center cgreen x370 y450 w170 h25, Misc Option
+Gui, 1:Font, s9
+Gui,1: Add, Checkbox, x370 y507 w170 h20       vSpecial Checked%Special%, Skip Special Upgrades
+Gui,1: Add, Checkbox, x370 y527 w170 h20        vExpedition Checked%Expedition%  , Skip Expeditions
+Gui, 1: Add, Checkbox, x370 y487 w150 h20  vlongmission Checked%longmission%,  Rare Mission First
+
+
+
+
+
+
+
+Gui, 1: Font,s12
+Gui,1: add, Text,  cgreen  x225 y485 w100 h25, Button Style
+Gui, 1:Font, s10
+Gui,1: add, radio, vRadio2 x225 y507 w100 h20   vPc Checked%pc%  , PC
+;Gui,1: add, radio,         x225 y527 w100 h20  vNew Checked%New%  , New
+
+
+
+
+Gui,1: add, Text,  x195 y485 w31 h65 ; filler
+Gui,1: add, Text,  x325 y485 w45 h65 ; filler
+Gui,1: add, Text,  x360 y450 w10 h65 ; filler
+Gui, 1: Font,s16 tBold fTahoma
+Gui,1: add, Text,+BackgroundTrans center cred x10 y330 w170, Game Settings:
+
+Gui, 1: Font,s10 tBold fTahoma
+Gui,1: add, Text,+BackgroundTrans  cwhite x10 y435 w250h20, game need be set to button style PC
+Gui,1: add, Text,+BackgroundTrans  cwhite x10 y455 w250h20, Use fullscreen in graphics setting
+Gui,1: add, Text,+BackgroundTrans center cwhite x10 y355 w180 h20, Disable Animated Menus
+Gui,1: Add,Text, +BackgroundTrans center cwhite x10 y375 w180 h20, browser firefox zoom 100
+Gui,1: Add,Text,+BackgroundTrans center cwhite x10 y395 w180 h20 , Windows 1920x1080
+Gui,1: Add,Text,+BackgroundTrans center cwhite x10 y415 w180 h20 , DPI scaling 100
+Gui, 1: Font, s12 tBold fTahoma
+Gui,1: Add,Text, +BackgroundTrans  center cwhite x215 y390 w120 h20 ,    Stop with ESC
+
+Gui, 1:Font, s14 Courier New
+Gui, 1: Add, Button,x220 y300 w110 h50 gStartStop, Start
+Gui, 1:Font, s9 Courier New
+Gui, 1: Add, Button,x235 y360 w80 gSaveButton, Save Settings
+Gui, 1: Show, w550 h550  , Simple Auto Clicker for Firestone
+
+
+return
+
+SaveButton:
+Gui,1: Submit, NoHide
+
+      IniWrite, %dragon%, settings.ini, GUI_Settings, vdragon
+      IniWrite, %dust%, settings.ini, GUI_Settings, vdust
+      IniWrite, %Coin%, settings.ini, GUI_Settings, vCoin
+      IniWrite, %Grace%, settings.ini, GUI_Settings,  vGrace
+      IniWrite, %Vermilion%, settings.ini, GUI_Settings, vVermilion
+      IniWrite, %Ankaa%, settings.ini, GUI_Settings, vAnkaa
+      IniWrite, %Azhar%, settings.ini, GUI_Settings, vAzhar
+      IniWrite, %Expedition%, settings.ini, GUI_Settings, vExpedition
+      IniWrite, %Special%, settings.ini, GUI_Settings,vSpecial
+      IniWrite, %Pc%, settings.ini, GUI_Settings,vPc
+      IniWrite, %New%, settings.ini, GUI_Settings,vNew
+      IniWrite, %Breaknormal%, settings.ini, GUI_Settings, vBreaknormal
+      IniWrite, %Break30%, settings.ini, GUI_Settings, vBreak30
+      IniWrite, %Break60%, settings.ini, GUI_Settings, vBreak60
+      IniWrite, %Breakskip%, settings.ini, GUI_Settings, vBreakskip
+      IniWrite, %longmission%, settings.ini, GUI_Settings, vlongmission
+
+
+      MsgBox,4096 ,Save, Settings has been saved, 1
+    Return
+
+
+StartStop:
+
+Toggle := !Toggle
+  GuiControl,, Button1, % (Toggle ? "Stop" : "Start")
+If Toggle
+  goto, loop
+
+loop:
+{
+Gui,1:hide
+
+;check that game is in full screen if not exit
+MsgBox, 0, checking , checking if game still in full screen, 1
+click 853, 480
+sleep 500
+ PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
+        If (ErrorLevel = 0){
+          goto, infullscreen
+        }else{
+           MsgBox, 0, fullscreen check failed, fullscreen check 1 fail trying again, 1
+        goto, fullscreencheck2
+      }
+;backup 2  check incase screen turn black for sec
+fullscreencheck2:
+sleep 1000
+ PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
+        If (ErrorLevel = 0){
+          goto, infullscreen
+        }else{
+           MsgBox, 0, fullscreen check failed, fullscreen check 2 fail trying again, 1
+        goto, fullscreencheck3
+      }
+;backup 3 check incase screen turn black for sec
+fullscreencheck3:
+sleep 1000
+ PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
+        If (ErrorLevel = 0){
+          goto, infullscreen
+        }else{
+             MsgBox, 0, fullscreen check failed, fullscreen check 3 fail trying again, 1
+        goto, fullscreencheck4
+      }
+      ;backup  4 check incase screen turn black for sec
+fullscreencheck4:
+sleep 1000
+ PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
+        If (ErrorLevel = 0){
+          goto, infullscreen
+        }else{
+          MsgBox, 0, fullscreen check 4 failed, !!!!EXIT!!!!!, 1
+        goto, exit
+      }
+
+infullscreen:
+ SplashTextOn, 250, 70, main screen, trying get to main screen
+  sleep 500
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
+
+     SplashTextOff
+    PixelSearch, X, Y, 1819, 51, 1900, 133, 0xEABA61, 10, Fast RGB
+        If (ErrorLevel = 0)
+        {
+          Goto, town
+        }else{
+          MsgBox, ,WARRNING, main screen not found, 3
+        Goto, Loop
+        }
+
+
+
+
+
+town:
+;town
+    PixelSearch, X, Y, 1808, 152 , 1900, 262, 0x2E3870, 10, Fast RGB
+        If (ErrorLevel = 0){
+         click 1863, 211
+         sleep 1000
+       }
+
+
+
+      MsgBox, ,check, making sure autoclicker not stuck, 0.5
+
+    PixelSearch, X, Y, 1348, 120, 1599, 269, 0x213F73, 10, Fast RGB
+        If (ErrorLevel = 0){
+          sleep 500
+        }
+        else
+        {
+          MsgBox, ,WARRNING, EMERGENCY EXITING, 3
+        Goto, Loop
+        }
+
+guild:
+;guild
+ PixelSearch, X, Y, 1554, 169, 1625, 251, 0xF40000, 5, Fast RGB
+    If (ErrorLevel = 0){
+		click 1511, 148
+       sleep 1000
+       }else{
+        goto, Engineer
+      }
+
+
+     GuiControlGet, Expedition
+      If (Expedition = 0){
+      Goto, Expeditions
+    }Else{
+      goto, guildclose
+        }
+
+Expeditions:
+ sleep 300
+PixelSearch, X, Y, 387, 393, 439, 455, 0xF40000, 5, Fast RGB
+    If (ErrorLevel = 0) {
+		click 263, 398
+       sleep 500
+   }else{
+   goto, guildclose
+   }
+
+
+;start expeditions
+      click 1305, 322
+      sleep 500
+      click 1305, 322
+      sleep 500
+
+;close exoeditions
+        PixelSearch, X, Y, 	1429, 27, 1526, 114, 0xFF5D09, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y, 5
+          click
+          sleep 500
+          }
+guildclose:
+;close guild
+ sleep 300
+       PixelSearch, X, Y, 	1774, 13 , 1890, 106 , 0xFF8220, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,5
+          click
+          sleep 1000
+          }
+
+
+    PixelSearch, X, Y, 1348, 120, 1599, 269, 0x213F73, 10, Fast RGB
+        If (ErrorLevel = 0)
+        {
+          Goto, Engineer
+        }
+        else
+        {
+          MsgBox, ,WARRNING, EMERGENCY EXITING, 3
+        Goto, Loop
+        }
+
+
+Engineer:
+;Engineer claim tools
+
+;checking if over lvl 50
+      PixelSearch, X, Y, 1383, 880, 1438, 937  , 0xF40000, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1255, 802
+          sleep 1000
+          }else{
+          goto, Campaign
+          }
+
+      click 561, 535
+      sleep 1000
+      click 1611, 725
+      sleep 500
+      click 1840, 54
+      sleep 1000
+
+ Campaign:
+ ;Campaign claim
+     PixelSearch, X, Y, 433, 220 , 490, 288 , 0xF40000, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 324, 185
+          sleep 1000
+          }else{
+          goto, Oracle
+          }
+      click 790, 497
+      sleep 500
+      click 130, 991
+      sleep 500
+      click 1834, 58
+      sleep 500
+
+
+
+Oracle:
+
+
+
+  ;Oracle
+  MsgBox, ,check, checking Oracle ,0.5
+  PixelSearch, X, Y, 1122, 982  , 1172, 1046, 0xF40000, 10, Fast RGB
+    If (ErrorLevel = 0){
+      click 1017, 924
+      sleep 1000
+      }else {
+      goto, Alchemist
+      }
+
+ PixelSearch, X, Y, 871, 341, 903, 382, 0xF40000, 5, Fast RGB
+    If (ErrorLevel = 0){
+      goto, rituals
+     }else{
+     goto, Oracleclose
+          }
+
+ rituals:
+      click 818, 429
+      sleep 300
+   ;Harmoney
+      click 1182, 503
+      sleep 300
+      click 1182, 503
+      sleep 300
+   ;Serenity
+      click 1623, 512
+      sleep 300
+      click 1623, 512
+      sleep 300
+   ;Obedience
+      click 1189, 893
+      sleep 300
+      click 1189, 893
+      sleep 300
+   ;Concentration
+      click 1615, 875
+      sleep 300
+      click 1615, 875
+      sleep 300
+
+Oracleclose:
+   ;close
+      click 1826, 61
+      sleep 1000
+
+;Alchemist
+Alchemist:
+;checking if over lvl 120
+    PixelSearch, X, Y,371, 897 , 537, 936 , 0xFFFFFF, 5, Fast RGB
+        If (ErrorLevel = 0){
+          click 457, 845
+          sleep 1000
+
+          }else{
+
+          goto, Magicquarter
+          }
+
+
+
+
+
+ ; check if don't use dust is checked
+    GuiControlGet, Dragon
+      If (Dragon = 0){
+      Goto, dragonblood
+    }Else{
+      goto, Dustcheck
+        }
+
+
+dragonblood:
+sleep 1000
+;dragon blood experiment check
+PixelSearch, X, Y, 	824, 700 , 	1050, 811, 0xFF00BF, 15, Fast RGB
+        If (ErrorLevel = 1){
+          Click 920, 807
+          sleep 200
+     }
+PixelSearch, X, Y, 	824, 700 , 	1050, 811, 0xFF00BF, 15, Fast RGB
+        If (ErrorLevel = 1){
+          Click 920, 807
+          sleep 200
+     }
+
+Dustcheck:
+; check if don't use dust is checked
+    GuiControlGet, Dust
+      If (Dust = 0){
+      Goto, duststart
+    }Else{
+      goto, coincheck
+        }
+
+duststart:
+sleep 300
+;Dust experiment check
+PixelSearch, X, Y, 	1164, 688 , 1403, 850, 0xFF00BF, 15, Fast RGB
+        If (ErrorLevel = 1){
+          Click 1301, 808
+          sleep 200
+     }
+PixelSearch, X, Y, 	1164, 688 , 1403, 850, 0xFF00BF, 15, Fast RGB
+        If (ErrorLevel = 1){
+          Click 1301, 808
+          sleep 200
+     }
+
+
+coincheck:
+sleep 300
+ ; check if don't use coin is checked
+    GuiControlGet,Coin
+         If (Coin = 0){
+
+            Goto, coinstart
+        } Else
+        {
+        goto, exitAlchemist
+        }
+
+coinstart:
+;Coin experiment check
+PixelSearch, X, Y, 	1506, 686 , 1774, 818, 0xFF00BF, 15, Fast RGB
+        If (ErrorLevel = 1){
+          Click 1685, 802
+          sleep 200
+     }
+PixelSearch, X, Y, 	1506, 686 , 1774, 818, 0xFF00BF, 15, Fast RGB
+        If (ErrorLevel = 1){
+          Click 1685, 802
+          sleep 200
+     }
+
+
+sleep 300
+goto, exitAlchemist
+
+exitAlchemist:
+   ;close
+      click 1826, 75
+      sleep 1000
+
+      MsgBox, ,check, making sure autoclicker not stuck, 0.5
+
+    PixelSearch, X, Y, 1348, 120, 1599, 269, 0x213F73, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Goto, Magicquarter
+        }else {
+          MsgBox, ,WARRNING, EMERGENCY EXITING, 3
+       Goto, Loop
+        }
+
+;Magic quarter
+Magicquarter:
+
+MsgBox, ,check, checking magic quarter ,0.5
+  PixelSearch, X, Y, 645, 217  , 	790, 415, 0xF40000, 5, Fast RGB
+    If (ErrorLevel = 0){
+      click 626, 276
+      sleep 1000
+    }else{
+    goto, Libary
+    }
+
+
+    GuiControlGet,Grace
+         If (Grace = 0){
+        Goto, Vermilion
+        } Else
+        {
+        goto, gracetain
+        }
+Vermilion:
+    GuiControlGet, Vermilion
+         If (Vermilion = 0){
+        Goto, Ankaa
+        } Else
+        {
+        goto, vermiliontrain
+        }
+
+ Ankaa:
+            GuiControlGet,Ankaa
+         If (Ankaa = 0){
+        Goto, Azhar
+        } Else
+        {
+        goto, ankaatain
+        }
+
+ Azhar:
+            GuiControlGet,azhar
+         If (azhar = 0){
+        Goto, exitquarter
+        } Else
+        {
+        goto, Azhartrain
+        }
+
+goto, exitquarter
+
+
+gracetain:
+   ; Grace
+      click 731, 996
+      sleep 500
+      click 1569, 1014
+      sleep 500
+      goto, exitquarter
+   ;Vermilion
+   vermiliontrain:
+      click 874, 1013
+      sleep 500
+      click 1569, 1014
+      sleep 500
+      goto, exitquarter
+   ;Ankaa
+   ankaatain:
+      click 1040, 999
+      sleep 500
+      click 1569, 1014
+      sleep 500
+      goto, exitquarter
+   ;Azhar
+   Azhartrain:
+      click 1191, 997
+      sleep 500
+      click 1569, 1014
+      sleep 500
+
+exitquarter:
+
+;train
+
+click 1147, 794
+sleep 500
+click 1147, 794
+sleep 500
+
+;exit
+
+click 1829, 57
+sleep 1000
+
+
+
+    PixelSearch, X, Y, 1348, 120, 1599, 269, 0x213F73, 10, Fast RGB
+        If (ErrorLevel = 0)
+        {
+          Goto, Libary
+        }
+        else
+        {
+          MsgBox, ,WARRNING, EMERGENCY EXITING, 3
+        Goto, Loop
+        }
+Libary:
+loop, 3 {
+;Libary
+      click 275, 667
+      sleep 1000
+   ;firestone
+      click 1807, 637
+      sleep 1000
+
+;making sure on firestone tree
+   PixelSearch, X, Y, 1060, 28,1163, 115 , 0xFDEB95,10, Fast RGB
+        If (ErrorLevel = 0){
+     goto, Research2
+     }
+}
+goto, loop
+
+Research2:
+ ; check If Research is ready
+       MsgBox, , Research 2, Checking Research 2, 0.5
+    ;Research 2
+       PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 1)
+          {
+            MsgBox, , Research 2, Research 2 Ready, 0.5
+            goto, Complete1
+    }Else {
+            MsgBox, , Research 2,  Research 2 Not ready, 0.5
+            goto, Research1
+          }
+
+
+Research1:
+        MsgBox, , Research 1, Checking Research 1, 0.5
+    ;Research 1
+         PixelSearch, X, Y, 478, 896, 690, 1056, 0xF900E7, 3, Fast RGB
+          If (ErrorLevel = 1){
+            MsgBox, , Research 1,  Research 1 Ready, 0.5
+           goto, Complete1
+
+
+        }Else {
+             MsgBox, , Research, Noting ready leaving Library  , 0.5
+            goto, close
+            }
+
+
+Complete1:
+
+   ;firestone 2
+      click 1274, 993
+      sleep 500
+      click 1351, 276
+      sleep 500
+      click 107, 41
+      sleep 500
+
+   ;firestone 1
+      click 575, 989
+      sleep 500
+      click 1351, 276
+      sleep 500
+      click 107, 41
+      sleep 500
+
+MouseMove, 92, 81
+Click 92, 81
+SLEEP 500
+
+
+
+
+
+        Loop, 50 {
+            Send, {WheelUp}
+            Sleep, 50
+        }
+
+ MouseMove, 173, 99
+Click 173, 99
+sleep 500
+
+        Loop, 3 {
+            Send, {WheelDown}
+            Sleep, 50
+        }
+
+;column 1
+column1check:
+      MsgBox, , check, colum 1 , 0.5
+      PixelSearch, X, Y,102, 163,334, 804,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+         goto, column1
+        }else{
+     goto, column2check
+        }
+;column 2
+column2check:
+ MsgBox, , check, colum 2 , 0.5
+      PixelSearch, X, Y,551,165,855, 819, 0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+         goto, column2
+        }else{
+        goto, coloim3check
+        }
+
+;column 3
+coloim3check:
+MsgBox, , check, colum 3, 0.5
+
+        PixelSearch, X, Y,	1020, 210 ,		1290, 832 ,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+         goto, column3
+        }else{
+        goto, coloim4check
+        }
+
+;column 4
+
+coloim4check:
+ MsgBox, , check, colum 4 , 0.5
+      PixelSearch, X, Y,	1391, 377,1692, 581, 0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+         goto, column4
+        }else{
+        goto, Researchmove2
+        }
+
+
+
+column1:
+
+
+loop, 2 {
+     PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 0){
+        goto, close
+         }
+         ; column 1
+	        PixelSearch, X, Y,102, 163,334, 804,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+			sleep 300
+		}else{
+		goto, speedupcolum1
+        }
+;start
+		PixelSearch, X, Y,686, 731,  928, 799 , 0x0B9F05,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}else{
+;exit
+PixelSearch, X, Y,1212, 248 , 	1282, 312 , 0xFF7B1D,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}
+      }
+Click 173, 99
+sleep 200
+Click 173, 99
+sleep 200
+ }
+
+;colum speed up
+speedupcolum1:
+ ; check If Research is ready
+    ;Research 2
+       PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 1)
+          {
+            goto, column2check
+    }Else {
+            MsgBox, , Research 2,  Research 2 Not ready, 0.5
+            goto, speedupcolum2
+          }
+
+
+speedupcolum2:
+
+    ;Research 1
+         PixelSearch, X, Y, 490, 828, 680, 983, 0xF900E7, 3, Fast RGB
+          If (ErrorLevel = 1){
+           goto, column2check
+
+
+        }Else {
+        goto, close
+            }
+
+
+column2:
+
+
+loop, 2 {
+         PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 0){
+        goto, close
+         }
+    ; column 2
+	PixelSearch, X, Y,551,165,855, 819, 0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+			sleep 300
+		}else{
+		goto, speedupcolum3
+		}
+
+;start
+		PixelSearch, X, Y,686, 731,  928, 799 , 0x0B9F05,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}else{
+;exit
+PixelSearch, X, Y,1212, 248 , 	1282, 312 , 0xFF7B1D,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}
+      }
+Click 173, 99
+sleep 200
+Click 173, 99
+sleep 200
+ }
+
+ ; check If Research is ready
+speedupcolum3:
+    ;Research 2
+       PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 1)
+          {
+
+            goto, coloim3check
+    }Else {
+
+            goto, speedupcolum4
+          }
+
+
+speedupcolum4:
+
+    ;Research 1
+         PixelSearch, X, Y, 490, 828, 680, 983, 0xF900E7, 3, Fast RGB
+          If (ErrorLevel = 1){
+
+           goto, coloim3check
+
+
+        }Else {
+
+            goto, close
+            }
+
+
+column3:
+loop, 2 {
+        PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 0){
+        goto, close
+         }
+    ; column 3 upper
+	PixelSearch, X, Y,903, 189, 1325, 838 ,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+			sleep 300
+		}else{goto, speedupcolum5
+		}
+
+;start
+		PixelSearch, X, Y,686, 731,  928, 799 , 0x0B9F05,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}else{
+;exit
+PixelSearch, X, Y,1212, 248 , 	1282, 312 , 0xFF7B1D,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}
+      }
+Click 173, 99
+sleep 200
+Click 173, 99
+sleep 200
+ }
+speedupcolum5:
+ ; check If Research is ready
+
+    ;Research 2
+       PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 1)
+          {
+
+            goto, coloim4check
+    }Else {
+
+            goto, speedupcolum6
+          }
+
+
+speedupcolum6:
+
+    ;Research 1
+         PixelSearch, X, Y, 490, 828, 680, 983, 0xF900E7, 3, Fast RGB
+          If (ErrorLevel = 1){
+           goto, coloim4check
+        }Else {
+            goto, close
+            }
+
+
+column4:
+
+
+loop, 2 {
+        PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 0){
+        goto, close
+         }
+
+ ; column 4
+      PixelSearch, X, Y,	1391, 377,1703, 632 , 0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+			sleep 300
+		}else{
+		goto, Researchcheckcolum3
+		}
+;start
+		PixelSearch, X, Y,686, 731,  928, 799 , 0x0B9F05,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}else{
+;exit
+PixelSearch, X, Y,1212, 248 , 	1282, 312 , 0xFF7B1D,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}
+      }
+Click 173, 99
+sleep 200
+Click 173, 99
+sleep 200
+
+}
+ ; check If Research is ready
+Researchcheckcolum3:
+    ;Research 2
+       PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 1)
+          {
+            goto, Researchmove2
+    }Else {
+            goto, Researchcheckcolum4
+          }
+
+
+
+Researchcheckcolum4:
+
+    ;Research 1
+         PixelSearch, X, Y, 490, 828, 680, 983, 0xF900E7, 3, Fast RGB
+          If (ErrorLevel = 1){
+           goto, Researchmove2
+           }Else{
+            goto, close
+            }
+
+
+
+Researchmove2:
+
+MouseMove, 173, 99
+Click 173, 99
+Sleep 500
+
+
+    Loop, 35{
+        Send, {WheelDown}
+        Sleep, 50
+        }
+        Sleep, 50
+
+
+
+column5check:
+MsgBox, , check, colum 5 , 0.5
+      PixelSearch, X, Y,22, 234,244, 744,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+         goto, column5
+        }else{
+        goto, column6check
+        }
+column6check:
+MsgBox, , check, colum 6 , 0.5
+      PixelSearch, X, Y,361, 262, 668, 734 ,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+         goto, column6
+        }else{
+        goto, column7check
+        }
+column7check:
+MsgBox, , check, colum 7 , 0.5
+      PixelSearch, X, Y, 894, 163, 1178, 818 ,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+         goto, column7
+        }else{
+        goto, column8check
+        }
+column8check:
+MsgBox, , check, colum 8 , 0.5
+      PixelSearch, X, Y,1273,169, 1634, 820,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+         goto, column8
+        }else{
+        goto, Close
+        }
+
+
+
+column5:
+loop, 2 {
+        PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 0){
+        goto, close
+         }
+
+    ; column 5 upper
+      PixelSearch, X, Y,22, 234,244, 744,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+        	Mousemove x, y, 5
+			Click
+			sleep 300
+		}else{
+		goto, speedupcolum7
+		}
+
+;start
+		PixelSearch, X, Y,686, 731,  928, 799 , 0x0B9F05,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}else{
+;exit
+PixelSearch, X, Y,1212, 248 , 	1282, 312 , 0xFF7B1D,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}
+      }
+Click 173, 99
+sleep 200
+Click 173, 99
+sleep 200
+ }
+
+ ; check If Research is ready
+speedupcolum7:
+    ;Research 2
+       PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 1)
+          {
+
+            goto, column6check
+    }Else {
+
+            goto, speedupcolum8
+          }
+
+speedupcolum8:
+
+
+    ;Research 1
+         PixelSearch, X, Y, 490, 828, 680, 983, 0xF900E7, 3, Fast RGB
+          If (ErrorLevel = 1){
+
+           goto, column6check
+
+
+        }Else {
+
+            goto, close
+            }
+
+
+
+
+
+column6:
+loop, 2 {
+          PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 0){
+        goto, close
+         }
+
+
+    ; column 6
+           PixelSearch, X, Y,361, 262, 668, 734  ,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+        	Mousemove x, y, 5
+			Click
+			sleep 300
+		}else{
+		goto, speedupcolum9
+		}
+
+;start
+		PixelSearch, X, Y,686, 731,  928, 799 , 0x0B9F05,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}else{
+;exit
+PixelSearch, X, Y,1212, 248 , 	1282, 312 , 0xFF7B1D,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}
+      }
+Click 173, 99
+sleep 200
+Click 173, 99
+sleep 200
+}
+ ; check If Research is ready
+speedupcolum9:
+    ;Research 2
+       PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 1){
+        goto, column7check
+    }Else{
+         goto, speedupcolum10
+      }
+
+speedupcolum10:
+
+
+    ;Research 1
+         PixelSearch, X, Y, 490, 828, 680, 983, 0xF900E7, 3, Fast RGB
+          If (ErrorLevel = 1){
+
+           goto, column7check
+
+
+        }Else {
+
+            goto, close
+            }
+
+
+column7:
+loop, 2 {
+          PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 0){
+        goto, close
+         }
+
+
+    ; column 7
+     PixelSearch, X, Y, 789, 188, 1210, 849,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+        	Mousemove x, y, 5
+			Click
+			sleep 300
+		}else{
+		goto, speedupcolum11
+		}
+
+;start
+		PixelSearch, X, Y,686, 731,  928, 799 , 0x0B9F05,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}else{
+;exit
+PixelSearch, X, Y,1212, 248 , 	1282, 312 , 0xFF7B1D,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}
+      }
+Click 173, 99
+sleep 200
+Click 173, 99
+sleep 200
+}
+  ; check If Research is ready
+speedupcolum11:
+    ;Research 2
+       PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 1)
+          {
+
+            goto, column8check
+    }Else {
+
+            goto, speedupcolum12
+          }
+
+speedupcolum12:
+
+
+    ;Research 1
+         PixelSearch, X, Y, 490, 828, 680, 983, 0xF900E7, 3, Fast RGB
+          If (ErrorLevel = 1){
+
+           goto, column8check
+
+
+        }Else {
+
+            goto, close
+            }
+
+
+column8:
+loop, 2 {
+          PixelSearch, X, Y, 1157, 856, 1379, 1021, 0xF000EB, 3, Fast RGB
+        If (ErrorLevel = 0){
+        goto, close
+         }
+
+    ; column 8
+      PixelSearch, X, Y,1238, 165 , 1634, 820,0xD8E2FA,1, Fast RGB
+        If (ErrorLevel = 0){
+        	Mousemove x, y, 5
+			Click
+			sleep 300
+		}else{
+		goto, speedupcolum11
+		}
+
+;start
+		PixelSearch, X, Y,686, 731,  928, 799 , 0x0B9F05,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}else{
+;exit
+PixelSearch, X, Y,1212, 248 , 	1282, 312 , 0xFF7B1D,10, Fast RGB
+        If (ErrorLevel = 0){
+			Mousemove x, y, 5
+			Click
+		}
+      }
+Click 173, 99
+sleep 200
+Click 173, 99
+sleep 200
+}
+ goto, Close
+
+
+;-------------------------------------------
+
+Close:
+
+      click 1836, 65
+      sleep 300
+
+
+      MsgBox, ,check, making sure autoclicker not stuck, 0.5
+
+
+
+    PixelSearch, X, Y, 1348, 120, 1599, 269, 0x213F73, 10, Fast RGB
+        If (ErrorLevel = 0){
+          MsgBox, ,check, not stuck, 0.5
+          Goto, Closetown
+        }else {
+          MsgBox, ,WARRNING, EMERGENCY EXITING, 3
+       Goto, Loop
+        }
+
+Closetown:
+
+;Close town
+      click 1800, 59
+      sleep 1000
+      click 1800, 59
+      sleep 1000
+      click 1800, 59
+      sleep 1000
+
+
+
+
+
+
+map:
+;Map
+PixelSearch, X, Y, 	1801, 278 , 1907, 390 ,0xFDD683, 10, Fast RGB
+        If (ErrorLevel = 0){
+           click 1857, 334
+           sleep 1000
+           goto, onmap
+             }else{
+                MsgBox, 0,cant find map, Cant find map icon trying again , 1
+                   Goto, map1
+                 }
+map1:
+;Map
+PixelSearch, X, Y, 	1801, 278 , 1907, 390 ,0xFDD683, 10, Fast RGB
+        If (ErrorLevel = 0){
+           click 1857, 334
+           sleep 1000
+           goto, onmap
+             }else{
+                MsgBox,0 ,cant find map, Cant find map icon trying again , 1
+                   Goto,  map2
+                 }
+ map2:
+;Map
+PixelSearch, X, Y, 	1801, 278 , 1907, 390 ,0xFDD683, 10, Fast RGB
+        If (ErrorLevel = 0){
+           click 1857, 334
+           sleep 1000
+           goto, onmap
+             }else{
+                MsgBox, 0, cant find map,  !!!!EXIT !!!!, 1
+                   Goto, exit
+                 }
+
+
+;making sure on map
+onmap:
+    PixelSearch, X, Y, 	1529, 8,1586, 57, 0xEA00EF, 10, Fast RGB
+        If (ErrorLevel = 0){
+          sleep 200
+        }else{
+        goto, map
+        }
+
+MouseMove, 154, 292
+SLEEP 300
+        Loop, 20 {
+            Send, {WheelUp}
+            Sleep, 50
+}
+
+;mission turn in 1
+MouseMove, 354, 377
+msgbox,,, checking mission 1 complete, 0.5
+loop, 20 {
+
+
+   PixelSearch, X, Y, 	40, 238, 256, 337 ,0x0C9E09, 10, Fast RGB
+        If (ErrorLevel = 0){
+         click 	160, 303
+        sleep 1000
+        }Else{
+            goto, missionturnin2backup
+     }
+  MouseMove, 354, 377
+}
+missionturnin2backup:
+;mission turn in 2 backup
+msgbox,,, checking mission 2 back up in case of gray bug, 0.5
+MouseMove, 354, 377
+
+loop, 15 {
+   PixelSearch, X, Y, 	29, 383, 257, 477,0x0C9E09, 5, Fast RGB
+        If (ErrorLevel = 0){
+        click 166, 437
+       sleep 1000
+			}Else{
+            goto, mission3mincheck1
+      }
+   MouseMove, 354, 377
+}
+mission3mincheck1:
+;   checking mission is under 3 min left
+msgbox,,, checking if mission is under 3 min left , 0.5
+
+loop, 15 {
+  click 150, 300
+  sleep 200
+   PixelSearch, X, Y, 	955, 747 , 1017, 828,0xB5B3B5, 1, Fast RGB
+        If (ErrorLevel = 0){
+          click 1380, 794
+          sleep 1000
+           }Else {
+            goto, mission3mincheck2
+     }
+     MouseMove, 354, 377
+ }
+
+
+mission3mincheck2:
+msgbox,,, checking if mission 2 is under 3 min left , 0.5
+;   checking if mission 2 is under 3 min left
+loop, 15 {
+click 166, 437
+sleep 200
+    PixelSearch, X, Y, 	955, 747 , 1017, 828,0xB5B3B5, 1, Fast RGB
+        If (ErrorLevel = 0){
+          click 1380, 794
+          sleep 1000
+        }else{
+          goto, checkreset
+      }
+
+MouseMove, 354, 377
+}
+
+
+
+;Gem reset map
+checkreset:
+   ;looking for diamond
+   PixelSearch, X, Y, 	134, 920, 172, 960 ,0xFC00E4, 10, Fast RGB
+
+        If (ErrorLevel = 0){
+        sleep 300
+        }else{
+          goto, troopcheck
+      }
+
+
+mapreset:
+;gem reset
+   PixelSearch, X, Y, 	134, 920, 172, 960 ,0xFC00E4, 10, Fast RGB
+        If (ErrorLevel = 0){
+        Click 189, 891
+        sleep 500
+        click 951, 671
+        sleep 500
+        }
+
+
+troopcheck:
+;check if map has less 3 min on reset
+
+;check if all missions are done
+PixelSearch, X, Y, 	109, 872, 302, 973 ,0xFFA433, 10, Fast RGB
+        If (ErrorLevel = 0){
+          sleep 100
+       }else{
+       goto,idle
+      }
+
+;check if diamond is there
+PixelSearch, X, Y, 	134, 920, 172, 960 ,0xFC00E4, 10, Fast RGB
+        If (ErrorLevel = 1){
+        click 215, 932
+        sleep 500
+        }
+
+
+idle:
+    ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+             MsgBox, , Troop Check, Idle troops found - maplocation, 0.5
+            goto, maplocation
+      }Else {
+
+        MsgBox, , Troop Check, No troops found - Close map, 0.5
+           goto, label
+        }
+
+
+maplocation:
+
+;map location check
+
+Click 1681, 276
+sleep 500
+      PixelSearch, X, Y, 994, 687,	1024, 720 ,0x10AA91, 3, Fast RGB
+        If (ErrorLevel = 0){
+
+		goto, mapcheck
+		}else{
+
+		sleep 300
+		}
+
+maplocationwrong:
+click 341, 16
+sleep 200
+        Loop, 20 {
+            Send, {WheelUp}
+            Sleep, 5
+           }
+click 341, 16
+sleep 200
+         Loop, 30 {
+            Send, {WheelDown}
+            Sleep, 5
+          }
+;moving map
+SplashTextOn, 250, 70, break, moving map`nto right `nlocation
+
+;map zoom
+    Loop, 10{
+        Send, {WheelDown}
+        }
+        Sleep, 10
+
+MouseMove 841, 44
+click
+
+
+
+
+MouseMove 789, 59
+click Down
+sleep 300
+mousemove 1135, 892
+click up
+sleep 300
+MouseMove 789, 59
+click Down
+sleep 300
+mousemove 1135, 892
+click up
+sleep 300
+MouseMove 789, 59
+click Down
+sleep 300
+mousemove 1135, 892
+click up
+sleep 300
+
+click 1495, 206
+sleep 300
+click 1495, 206
+sleep 300
+
+
+
+
+
+      PixelSearch, X, Y, 	1586, 935 ,1617, 954   ,0x0F0E0A, 5, Fast RGB
+        If (ErrorLevel = 0){
+
+		goto,  finalmapmove
+		}else{
+		goto, maplocationwrong
+		}
+finalmapmove:
+
+
+
+mousemove 1597, 944
+click Down
+sleep 300
+
+mousemove 863, 155
+click up
+sleep 300
+
+SplashTextOff
+
+
+
+
+mapcheck:
+
+
+ ;long missions first
+GuiControlGet, longmission
+      If (longmission = 1){
+      Goto, longmission
+    }
+
+shortmission:
+
+
+    ; Check if there are idle troop
+
+
+   PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+         MsgBox, , Troop Check, Idle troops found - starting map check, 0.5
+            goto, eventmission1
+      }Else
+      {
+         MsgBox, , Troop Check, No troops found - Close map, 0.5
+      goto, label
+        }
+
+
+eventmission1:
+MsgBox, , mystery mission, Checking mystery  mission, 0.5
+;event mission 1 done
+click 1653, 327
+  PixelSearch, X, Y, 976, 549 ,  1059, 583  , 0x775950, 4, Fast RGB
+        If (ErrorLevel = 0){
+       Mousemove x, y,
+        Click
+        sleep 200
+         }else{
+           goto, eventmission2
+           }
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+eventmission2:
+;event mission 2 done
+     PixelSearch, X, Y, 	750, 386 , 818, 421,0x775950, 5, Fast RGB
+        If (ErrorLevel = 0){
+       Mousemove x, y,
+        Click
+        sleep 200
+         }else{
+           goto, dragoncheck1
+           }
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+dragoncheck1:
+MsgBox, , dragon mission, Checking dragon  mission, 0.5
+;dragon 1 done
+    PixelSearch, X, Y,  467, 914, 553, 991, 0x7A7251, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 515, 961
+          sleep 200
+           }else{
+           goto, idletroop1
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop1:
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, dragoncheck2
+        }else{
+        goto, label
+        }
+
+dragoncheck2:
+;dragon 2 done
+    PixelSearch, X, Y, 601, 586,678, 631 , 0x5D2C31, 10, Fast RGB
+        If (ErrorLevel = 0){
+
+          Click 642, 578
+          sleep 200
+           }else{
+           goto, idletroop2
+           }
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop2:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, dragoncheck3
+        }else{
+        goto, label
+        }
+dragoncheck3:
+;dragon 3 done
+    PixelSearch, X, Y, 605, 147, 661, 212 , 0x5D2C31, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 649, 167
+          sleep 200
+           }else{
+           goto, idletroop3
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop3:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, dragoncheck4
+        }else{
+        goto, label
+        }
+dragoncheck4:
+;dragon 4 done
+     PixelSearch, X, Y, 1526, 740  , 1614, 857  , 0x7A754F, 3, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1579, 786
+          sleep 200
+           }else{
+           goto, scoutprecheck
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutprecheck:
+   ; Check if there are idle troop
+
+  PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, scoutcheck1
+        }else{
+        goto, label
+        }
+
+
+
+scoutcheck1:
+MsgBox, , scout mission, Checking Scout  Mission, 0.5
+
+;scout1 done
+sleep 100
+     PixelSearch, X, Y, 511, 184, 579, 205 , 0x7F5544, 8, Fast RGB
+        If (ErrorLevel = 0){
+
+          Click 555, 166
+          sleep 200
+           }else{
+                 goto, scoutcheck2
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck2:
+;scout2 done
+sleep 100
+     PixelSearch, X, Y, 715, 224 , 789, 251 , 0x824B3C, 10, Fast RGB
+        If (ErrorLevel = 0){
+        Click 757, 215
+         sleep 200
+           }else{
+           goto, scoutcheck3
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck3:
+;scout3 done
+sleep 100
+     PixelSearch, X, Y, 891, 209, 953, 268, 0x7F4F40, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 927, 227
+         sleep 200
+           }else{
+           goto, scoutcheck4
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck4:
+;scout4  done
+sleep 100
+      PixelSearch, X, Y, 635, 345, 710, 387, 0x7F5544, 8, Fast RGB
+        If (ErrorLevel = 0){
+          Click 678, 344
+          sleep 200
+
+           }else{
+           goto, scoutcheck5
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck5:
+;scout5 done
+sleep 100
+        PixelSearch, X, Y, 	842, 377  , 	924, 416, 0x7F5344, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 886, 361
+          sleep 200
+           }else{
+           goto, scoutcheck6
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck6:
+;scout6 done
+sleep 100
+    PixelSearch, X, Y, 940, 372, 1006, 390, 0x7F5344, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 970, 356
+         sleep 200
+           }else{
+           goto, idletroop4
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop4:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, scoutcheck7
+        }else{
+        goto, label
+        }
+
+	  scoutcheck7:
+;scout7 done
+sleep 100
+       PixelSearch, X, Y, 552, 512 , 623, 536, 0x7F4F40, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 591, 500
+          sleep 200
+           }else{
+           goto, scoutcheck8
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck8:
+;scout 8 done
+      sleep 100
+  PixelSearch, X, Y, 691, 513, 	776, 561 ,0x7F4F40, 8, Fast RGB
+        If (ErrorLevel = 0){
+          Click 739, 520
+          sleep 200
+           }else{
+           goto, scoutcheck9
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck9:
+;scout 9 done
+sleep 100
+   PixelSearch, X, Y, 864, 686 , 945, 715 , 0x7F4A3B, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 901, 675
+          sleep 200
+           }else{
+           goto, scoutcheck10
+           }
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck10:
+;scout10 done
+sleep 100
+    PixelSearch, X, Y, 1128, 929,1204, 958 , 0x7F4F40, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1167, 914
+          sleep 200
+           }else{
+           goto, scoutcheck11
+           }
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+	  scoutcheck11:
+;scout11 done
+    PixelSearch, X, Y, 1318, 708, 1384, 740, 0x7B4E41, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1357, 700
+          sleep 200
+           }else{
+           goto, scoutcheck12
+           }
+
+;;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+	  scoutcheck12:
+;scout12 done
+sleep 100
+       PixelSearch, X, Y, 1385, 663 , 	1460, 697 , 0x7F5244, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1423, 656
+          sleep 200
+           }else{
+           goto, scoutcheck13
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+	  scoutcheck13:
+;scout13 done
+sleep 50
+    PixelSearch, X, Y, 1506, 595, 1592, 632, 0x805548, 10, Fast RGB
+        If (ErrorLevel = 0){
+        Click 1539, 589
+        sleep 200
+           }else{
+           goto, scoutcheck14
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck14:
+;scout14 done
+sleep 100
+   pixelSearch, X, Y, 1384, 432 , 1455, 458, 0x7F4E3F, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1428, 422
+          sleep 200
+           }else{
+           goto, idletroop5
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop5:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, scoutcheck15
+        }else{
+        goto, label
+        }
+
+scoutcheck15:
+;scout15 done
+    PixelSearch, X, Y, 1442, 354, 1514, 378, 0x7F4235, 8, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1474, 339
+         sleep 200
+           }else{
+           goto, scoutcheck16
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+scoutcheck16:
+;scout16 done
+sleep 100
+      PixelSearch, X, Y, 1331, 178,1414, 211, 0x824B3C, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1378, 180
+           sleep 200
+           }else{
+           goto, scoutcheck17
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+scoutcheck17:
+;scout17 done
+sleep 100
+      PixelSearch, X, Y, 1167, 449, 1250, 492, 0x824E3E, 10, Fast RGB
+        If (ErrorLevel = 0){
+           Click 1215, 453
+           sleep 200
+           }else{
+           goto, scoutcheck18
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+	  scoutcheck18:
+;scout18 done
+     PixelSearch, X, Y, 1256, 474, 1332, 500, 0x7F483A, 10, Fast RGB
+        If (ErrorLevel = 0){
+           Click 1295, 461
+           sleep 200
+           }else{
+           goto, adventureprecheck
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+adventureprecheck:
+
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, adventurecheck1
+        }else{
+        goto, label
+      }
+
+;adventure missions
+
+adventurecheck1:
+;adventure 1 done
+MsgBox, , adventure mission, Checking Adventure Mission, 0.5
+       PixelSearch, X, Y, 475, 337 , 546, 360, 0x376662, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 512, 328
+          sleep 200
+           }else{
+           goto, adventurecheck2
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+adventurecheck2:
+;adventure 2 done
+        PixelSearch, X, Y,475, 420,563, 454 , 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+        Click 521, 413
+         sleep 200
+           }else{
+           goto, adventurecheck3
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+adventurecheck3:
+;adventure 3 done
+      PixelSearch, X, Y, 581, 292 , 651, 317 , 0x346968, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 614, 279
+          sleep 200
+           }else{
+           goto, adventurecheck4
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+adventurecheck4:
+;adventure 4 done
+       PixelSearch, X, Y, 	439, 688 , 529, 725 , 0x346968, 10, Fast RGB
+        If (ErrorLevel = 0){
+         Click 490, 679
+         sleep 200
+           }else{
+           goto, idletroop6
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop6:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, adventurecheck5
+        }else{
+        goto, label
+        }
+adventurecheck5:
+;adventure 5 done
+       PixelSearch, X, Y, 696, 611, 759, 633 , 0x346968, 10, Fast RGB
+        If (ErrorLevel = 0){
+         Click 729, 595
+         sleep 200
+           }else{
+           goto, adventurecheck6
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;spitm
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+adventurecheck6:
+;adventure 6 done
+       PixelSearch, X, Y, 	684, 780 ,762, 805  , 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 727, 770
+          sleep 200
+           }else{
+           goto, adventurecheck7
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+adventurecheck7:
+;adventure 7 done
+        PixelSearch, X, Y, 811, 517,880, 542, 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 847, 502
+          sleep 200
+           }else{
+           goto, adventurecheck8
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;spitm
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+adventurecheck8:
+;adventure 8 done
+        PixelSearch, X, Y, 882, 559 ,952, 580, 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+         Click 915, 550
+         sleep 200
+           }else{
+           goto, idletroop7
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop7:
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, adventurecheck9
+        }else{
+        goto, label
+        }
+
+adventurecheck9:
+;adventure 9 done
+     PixelSearch, X, Y, 1056, 536, 	1122, 555, 0x346562, 5, Fast RGB
+        If (ErrorLevel = 0){
+         Click 1088, 522
+         sleep 200
+           }else{
+           goto, adventurecheck10
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+adventurecheck10:
+;adventure 10 done
+sleep 50
+      PixelSearch, X, Y, 1062, 694 ,	1142, 728  , 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1100, 684
+          sleep 200
+           }else{
+           goto, adventurecheck11
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+adventurecheck11:
+;adventure 11 done
+     PixelSearch, X, Y, 	1474, 901, 1543, 924   , 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1507, 891
+          sleep 200
+           }else{
+           goto,adventurecheck12
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;spitm
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+adventurecheck12:
+sleep 200
+;adventure 12 done
+              PixelSearch, X, Y,  	1480, 707  , 1560, 736 , 0x346562, 8, Fast RGB
+        If (ErrorLevel = 0){
+         Click 1526, 697
+         sleep 200
+           }else{
+           goto, idletroop8
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop8:
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, adventurecheck13
+        }else{
+        goto, label
+        }
+
+
+adventurecheck13:
+sleep 200
+;adventure 13 done
+     PixelSearch, X, Y, 1370, 560, 1438, 577  , 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1400, 546
+         sleep 200
+           }else{
+           goto, adventurecheck14
+           }
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+adventurecheck14:
+sleep 200
+;adventure 14 done
+      PixelSearch, X, Y, 1475, 431, 1541, 453 , 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1516, 415
+           sleep 200
+           }else{
+           goto, adventurecheck15
+       }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+adventurecheck15:
+sleep 200
+;adventure 15 done
+     PixelSearch, X, Y, 1540, 251,1614, 273 , 0x346968, 10, Fast RGB
+        If (ErrorLevel = 0){
+         Click 1578, 236
+         sleep 500
+           }else{
+           goto, adventurecheck16
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+adventurecheck16:
+sleep 200
+;adventure 16 done
+ PixelSearch, X, Y, 1338, 309 , 1408, 335 , 0x346562, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1375, 297
+          sleep 200
+           }else{
+           goto, warprecheck
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;spitm
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+  warprecheck:
+
+
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck1
+        }else{
+        goto, label
+      }
+
+
+
+warcheck1:
+;war 1 done
+sleep 100
+MsgBox, , War mission, Checking War Mission, 0.5
+ PixelSearch, X, Y, 668, 431, 738, 455   , 0x80575E, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 702, 417
+          sleep 200
+
+           }
+
+
+;;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+warcheck2:
+;war 2 done
+
+sleep 100
+   PixelSearch, X, Y, 984, 211,1060, 241 , 0x6A3F47, 8, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1027, 202
+          sleep 200
+           }else{
+           goto, idletroop9
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop9:
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck3
+        }else{
+        goto, label
+        }
+warcheck3:
+;war 3 done
+sleep 100
+
+    PixelSearch, X, Y,1049, 436 , 1125, 468, 0x80575E, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1080, 423
+          sleep 200
+           }else{
+           goto, warcheck4
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+warcheck4:
+;war 4 done
+sleep 100
+     PixelSearch, X, Y, 1260, 304 , 1329, 329, 0x80575E, 3, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1305, 298
+          sleep 200
+           }else{
+           goto, idletroop10
+           }
+;spitm
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop10:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck5
+        }else{
+        goto, label
+        }
+warcheck5:
+;war 5 done
+sleep 100
+  PixelSearch, X, Y, 1292, 386,1353, 415  , 0x825259,8, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1330, 386
+          sleep 200
+           }else{
+           goto, warcheck6
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+warcheck6:
+;war 6 done
+sleep 100
+    PixelSearch, X, Y, 1498, 510, 1575, 537 , 0x805056, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1540, 496
+          sleep 200
+           }else{
+           goto, idletroop11
+           }
+
+;spitm
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop11:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck7
+        }else{
+        goto, label
+        }
+warcheck7:
+;war 7 done
+sleep 100
+ PixelSearch, X, Y,1249, 561,1325, 581, 0x80575E, 3, Fast RGB
+        If (ErrorLevel = 0){
+          click 1286, 545
+          sleep 200
+           }else{
+           goto, warcheck8
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+warcheck8:
+;war 8 done
+    PixelSearch, X, Y,1172, 638, 1256, 675, 0x6A3F47, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1220, 632
+          sleep 200
+           }else{
+           goto, idletroop12
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop12:
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck9
+        }else{
+        goto, label
+        }
+warcheck9:
+;war 9 done
+   PixelSearch, X, Y, 949, 624, 1021, 652,0x80575E, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 996, 613
+          sleep 200
+           }else{
+           goto, warcheck10
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+warcheck10:
+;war 10 done
+    PixelSearch, X, Y, 805, 659 , 873, 681 , 0x805157, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 835, 651
+          sleep 200
+           }else{
+           goto, idletroop13
+           }
+
+;;spitm
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop13:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck11
+        }else{
+        goto, label
+        }
+warcheck11:
+;war 11 done
+     PixelSearch, X, Y, 725, 691, 798, 717 , 0x80575E, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 768, 689
+          sleep 200
+
+
+           }else{
+           goto, warcheck12
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+warcheck12:
+;war 12 done
+  PixelSearch, X, Y, 780, 878 , 862, 904, 0x80575E, 10, Fast RGB
+        If (ErrorLevel = 0){
+        Click 824, 872
+          sleep 200
+           }else{
+           goto, idletroop14
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop14:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck13
+        }else{
+        goto, label
+        }
+warcheck13:
+;war 13 done
+        PixelSearch, X, Y, 865, 812 , 942, 846  , 0x80575E,3, Fast RGB
+        If (ErrorLevel = 0){
+          Click 903, 803
+          sleep 200
+           }else{
+           goto, warcheck14
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+warcheck14:
+;war 14 done
+sleep 100
+     PixelSearch, X, Y, 924, 786, 1000, 810 , 0x805056, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 961, 780
+          sleep 200
+
+           }else{
+           goto, idletroop15
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop15:
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck15
+        }else{
+        goto, label
+        }
+warcheck15:
+;war 15 spitm done
+           PixelSearch, X, Y, 1083, 824, 	1155, 843 ,  0x794B53, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1121, 815
+          sleep 200
+           }else{
+           goto, warcheck16
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+warcheck16:
+;war 16 done
+     PixelSearch, X, Y, 1369, 826,1447, 851, 0x80575E, 8, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1409, 811
+          sleep 200
+           }else{
+           goto, idletroop16
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop16:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, warcheck17
+        }else{
+        goto, label
+        }
+warcheck17:
+;war 17 done
+     PixelSearch, X, Y, 1457, 805 ,	1528, 830 , 0x794B53, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1496, 793
+          sleep 200
+           }else{
+           goto, idletroop17
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+ idletroop17:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, longmissionckeck
+        }else{
+        goto, label
+        }
+longmissionckeck:
+  ;long missions first
+GuiControlGet, longmission
+      If (longmission = 1){
+      Goto, backupstart
+    }
+
+longmission:
+
+
+
+
+
+monsterecheck1:
+;monster 1
+MsgBox, , monster mission, Checking monster  mission, 0.5
+     PixelSearch, X, Y, 961, 792, 1080, 899 , 0x65476B, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1021, 833
+          sleep 200
+           }else{
+           goto, idletroop18
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop18:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, monsterecheck2
+        }else{
+        goto, label
+        }
+monsterecheck2:
+;monster 2
+   PixelSearch, X, Y, 	1115, 552, 1208, 593  , 0x65476B, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1176, 557
+          sleep 200
+           }else{
+           goto, idletroop19
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop19:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, monsterecheck3
+        }else{
+        goto, label
+        }
+
+monsterecheck3:
+;monster 3 done
+   PixelSearch, X, Y, 897, 472 , 971, 493   , 0x65476B, 10, Fast RGB
+        If (ErrorLevel = 0){
+          Click 942, 459
+          sleep 200
+           }else{
+           goto, idletroop20
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+idletroop20:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, navalcheck1
+        }else{
+        goto, label
+        }
+ navalcheck1:
+;naval 1
+MsgBox, , naval mission, Checking naval mission, 0.5
+    PixelSearch, X, Y, 1273, 862, 	1386, 940 , 0x4F707E,5, Fast RGB
+        If (ErrorLevel = 0){
+          Click 1328, 886
+          sleep 200
+           }else{
+           goto, idletroop21
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop21:
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, navalcheck2
+        }else{
+        goto, label
+        }
+ navalcheck2:
+;naval 2
+    PixelSearch, X, Y, 1171, 337,	1259, 391 , 0x5A727E, 5, Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 200
+           }else{
+           goto, idletroop22
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+idletroop22:
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto,  navalcheck3
+        }else{
+        goto, label
+        }
+ navalcheck3:
+;naval 3
+     PixelSearch, X, Y, 342, 995, 	442, 1073 , 0x5A727E, 3, Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 200
+           }else{
+           goto, hiddenmissionprecheck
+           }
+
+;start
+
+	PixelSearch, X, Y, 		952, 850, 1219, 946 , 0x15BC15, 15 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+         }else{
+ ;exit
+          PixelSearch, X, Y, 1492, 179, 1562, 262 , 0xFF620A, 10 ,Fast RGB
+        If (ErrorLevel = 0){
+          Mousemove x, y,
+          Click
+          sleep 50
+          }
+     }
+
+hiddenmissionprecheck:
+MsgBox, , hidden mission, Checking hidden missions, 0.5
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+        goto, hiddenmission
+        }else{
+        goto, label
+        }
+
+hiddenmission:
+
+    ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, warhidden
+      }Else {
+    goto, label
+        }
+warhidden:
+;war 18 done
+click 1219, 993
+sleep 200
+click 1062, 904
+sleep 100
+click 1764, 289
+sleep 100
+
+    ; Check if there are idle troop
+
+   PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, monsterhidden
+      }Else {
+    goto, label
+        }
+
+;monster mission
+ monsterhidden:
+;monster 4 done
+click 587, 1003
+sleep 100
+click 1062, 904
+sleep 100
+click 1764, 289
+sleep 100
+
+    ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, navalhidden
+      }Else {
+    goto, label
+        }
+
+navalhidden:
+
+;naval 4
+click 894, 1070
+sleep 100
+click 1062, 904
+sleep 100
+click 1764, 289
+sleep 100
+
+
+
+    ; Check if there are idle troop
+
+   PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, titan
+      }Else {
+    goto, label
+        }
+
+
+
+;titan mission
+Titan:
+;1
+click 1275, 2
+sleep 100
+click 1062, 904
+sleep 100
+click 1764, 289
+sleep 100
+;2
+click 1365, 5
+sleep 100
+click 1062, 904
+sleep 100
+click 1764, 289
+sleep 100
+;3
+click 1164, 5
+sleep 100
+click 1062, 904
+sleep 100
+click 1764, 289
+sleep 100
+;4
+click 1224, 5
+sleep 100
+click 1062, 904
+sleep 100
+click 1764, 289
+sleep 100
+
+
+
+
+
+    ; Check if there are idle troop
+
+   PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, Shadow
+      }Else {
+    goto, label
+        }
+
+ ;Shadow mission
+Shadow:
+;1
+click 1533, 180
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1608, 160
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1534, 177
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1440, 190
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+ ;long missions first
+GuiControlGet, longmission
+      If (longmission = 1){
+      Goto, shortmission
+    }else{
+    goto, backupstart
+
+    }
+
+
+backupstart:
+;backup incase  PixelSearch failed and mission didnt start
+
+;mystery mission
+ PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+          MsgBox, , warring, Something is wrong with map mission using backup start , 1
+            goto, mysterymission
+      }Else {
+    goto, label
+        }
+
+
+mysterymission:
+sleep 500
+
+click 1030, 564
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 790, 381
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, scout
+      }Else {
+    goto, label
+        }
+
+ ;scout mission
+
+scout:
+
+click 555, 166
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 757, 215
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 927, 227
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 678, 344
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+   ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, scout2
+      }Else {
+           goto, label
+        }
+
+scout2:
+
+
+click 886, 361
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 970, 356
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 591, 500
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 739, 520
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 901, 675
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+    ; Check if there are idle troop
+
+   PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, scout3
+      }Else {
+           goto, label
+        }
+scout3:
+
+click 1167, 914
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1357, 700
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1423, 656
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1539, 589
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+    ; Check if there are idle troop
+
+   PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, scout4
+      }Else {
+           goto, label
+        }
+scout4:
+
+
+click 1428, 422
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1474, 339
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1378, 180
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1215, 453
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1295, 461
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+;backup adventure mission
+
+backupadventure:
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+
+            goto, adventure
+      }Else {
+    goto, label
+        }
+
+  ;adventure mission
+
+adventure:
+click 512, 328
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 521, 413
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 614, 279
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+    ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, adventure2
+      }Else {
+    goto, label
+        }
+adventure2:
+
+
+click 490, 679
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 729, 595
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 728, 775
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+    ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, adventure3
+      }Else {
+    goto, label
+        }
+adventure3:
+
+
+click 847, 502
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 915, 550
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+click 1088, 522
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+    ; Check if there are idle troop
+
+   PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, adventure4
+      }Else {
+    goto, label
+        }
+adventure4:
+
+click 1100, 684
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1507, 891
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1519, 695
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+    ; Check if there are idle troop
+
+   PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, adventure5
+      }Else {
+    goto, label
+        }
+adventure5:
+
+
+click 1400, 546
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1516, 415
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 578, 236
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1368, 313
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+
+;backup war mission
+
+backupwar:
+
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+
+            goto, war
+      }Else {
+    goto, label
+        }
+
+;war mission
+
+war:
+click 702, 417
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1027, 202
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+    ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, war1
+      }Else {
+    goto, label
+        }
+war1:
+
+click 1080, 423
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1305, 298
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+   ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, war2
+      }Else {
+    goto, label
+        }
+war2:
+
+click 1330, 386
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1540, 496
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+   ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, war3
+      }Else {
+    goto, label
+        }
+war3:
+
+click 1286, 545
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1220, 632
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+   ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, war4
+      }Else {
+    goto, label
+        }
+war4:
+
+click 996, 613
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 835, 651
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+   ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, war5
+      }Else {
+    goto, label
+        }
+war5:
+
+click 768, 689
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 824, 872
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+   ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, war6
+      }Else {
+    goto, label
+        }
+war6:
+
+click 903, 803
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 962, 773
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+   ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, war7
+      }Else {
+    goto, label
+        }
+war7:
+
+click 1121, 815
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1409, 811
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+   ; Check if there are idle troop
+
+    PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+            goto, war8
+      }Else {
+    goto, label
+        }
+war8:
+
+click 1496, 793
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1219, 993
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+;monster mission backup
+backupmonster:
+
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+
+            goto, monster
+      }Else {
+    goto, label
+        }
+
+;monster mission
+monster:
+click 1026, 822
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1192, 543
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 942, 459
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 584, 1072
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+
+;naval mission backup
+backupnaval:
+
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+
+            goto, naval
+      }Else {
+    goto, label
+        }
+
+naval:
+
+
+click 1329, 877
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1220, 350
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 404, 1038
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 894, 1070
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+;dragon mission backup
+backupdragon:
+
+PixelSearch, X, Y, 	679, 1018 , 807, 1073 ,0xF7E6CB, 1, Fast RGB
+        If (ErrorLevel = 0){
+
+            goto, dragon
+      }Else {
+    goto, label
+        }
+
+;dragon mission
+dragon:
+click 515, 961
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 642, 578
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 649, 167
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+click 1579, 786
+sleep 100
+click 990, 893
+sleep 100
+click 329, 925
+sleep 100
+
+
+label:
+;leave map
+click 1836, 60
+sleep 1000
+
+
+MsgBox, 0, checking , checking if game still in full screen, 1
+
+ PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
+        If (ErrorLevel = 0){
+          sleep 200
+        }else{
+        goto, exit
+        }
+
+
+
+     GuiControlGet, Pc
+      If (Pc = 1){
+      Goto, buttonstylepc
+    }
+
+      GuiControlGet, New
+      If (Expedition = 1){
+      Goto, buttonstylenew
+    }
+
+
+buttonstylenew:
+
+     GuiControlGet, special
+      If (Special = 0){
+      Goto, specialUpgradesnew
+    }Else{
+      goto,  normalupdragesnew
+        }
+
+
+
+specialUpgradesnew:
+;special Upgrades
+    click 1492, 1010
+    sleep 100
+
+
+
+  normalupdragesnew:
+  ;last to first heroes
+    click 1102, 1005
+    sleep 100
+    click 920, 1005
+    sleep 100
+    click 732, 1005
+    sleep 100
+    click 542, 1005
+    sleep 100
+	;leader
+    click 83, 1005
+    sleep 100
+	;guardian
+    click 1270, 1005
+    sleep 100
+
+
+   ;normal with guaridan/spell 3
+GuiControlGet, Breaknormal
+      If (Breaknormal = 1){
+      Goto, Break1
+    }else{
+      goto, breakcheck
+  }
+
+
+  Break1:
+
+SplashTextOn, 250, 70, break, blaze spell 3`nGuardian attack`n1 minute
+Gui, 2: +AlwaysOnTop +LastFound -Caption +E0x20
+Gui, 2:  Color,FFFFFF
+WinSet,Transcolor, FFFFFF
+Gui, 2: Add, Picture,x200 y100 w300 h300, Images\break.png
+Gui, 2: Add, Picture,x1000 y100 , Images\coffetime.jpg
+Gui, 2: Show, x250 y300 h400 h400, My Picture GUI
+
+
+WinActivate, ahk_exe Firestone.exe
+sleep 200
+;turn off auto spells
+ PixelSearch, X, Y, 755, 896 ,  846, 991 , 0x74F2D1, 10, Fast RGB
+        If (ErrorLevel = 0){
+       click 797, 952
+       sleep 200
+     }
+
+loop, 20 {
+  ;blaze spell 3
+WinActivate, ahk_exe Firestone.exe
+
+
+click 417, 974
+Sleep 200
+
+; Guardian Attack
+  MouseMove, 1053, 154
+        Sleep, 100
+        Click Down
+        Sleep, 2500
+
+  MouseMove, 1043, 326
+        Sleep, 100
+        Click Up
+        Sleep, 100
+
+
+      }
+
+ SplashTextOff
+ Gui, 2: destroy
+
+;turn on auto spells
+ PixelSearch, X, Y, 755, 896 ,  846, 991 , 0x74F2D1,10, Fast RGB
+        If (ErrorLevel = 1){
+       click 797, 952
+       sleep 200
+
+      }
+
+
+Goto, Loop
+
+
+buttonstylepc:
+
+
+;Open Upgrades
+    click 1422, 963
+    sleep 300
+
+
+
+;Upgrades
+
+     GuiControlGet, special
+      If (Special = 0){
+      Goto, specialUpgradespc
+    }Else{
+      goto,  normalupdragespc
+        }
+
+
+
+specialUpgradespc:
+
+    click 1636, 195
+    sleep 100
+
+
+
+  normalupdragespc:
+    click 1633, 919
+    sleep 100
+    click 1635, 797
+    sleep 100
+    click 1634, 675
+    sleep 100
+    click 1634, 556
+    sleep 100
+    click 1635, 438
+    sleep 100
+    click 1637, 318
+    sleep 100
+
+;close upgrade
+    click 1847, 49
+    sleep 100
+
+
+ ;normal with guaridan/spell 3
+GuiControlGet, Breaknormal
+      If (Breaknormal = 1){
+      Goto, Break
+    }else{
+      goto, breakcheck
+  }
+
+
+  Break:
+
+SplashTextOn, 250, 70, break, blaze spell 3`nGuardian attack`n1 minute
+
+sleep 200
+;turn off auto spells
+ PixelSearch, X, Y, 755, 896 ,  846, 991 , 0x74F2D1, 10, Fast RGB
+        If (ErrorLevel = 0){
+       click 799, 1006
+       sleep 200
+     }
+
+; Guardian Attack
+loop, 20 {
+  ;blaze spell 3
+
+
+click 1110, 1005
+Sleep 200
+
+
+  MouseMove, 1053, 154
+        Sleep, 100
+        Click Down
+        Sleep, 2500
+
+  MouseMove, 1043, 326
+        Sleep, 100
+        Click Up
+        Sleep, 100
+
+
+      }
+  PixelSearch, X, Y, 755, 896 ,  846, 991 , 0x74F2D1,10, Fast RGB
+        If (ErrorLevel = 1){
+       click 801, 992
+       sleep 200
+
+     }
+
+ SplashTextOff
+
+
+
+
+
+
+
+
+
+
+}
+Goto, Loop
+
+
+breakcheck:
+;break sleep 30 sec
+GuiControlGet, Break30
+      If (Break30 = 1){
+      Goto, Break30
+    }
+;break sleep 60 sec
+GuiControlGet, Break60
+      If (Break60 = 1){
+      Goto, Break60
+    }
+;skipbreak
+GuiControlGet, Breakskip
+      If (Breakskip = 1){
+      Goto, loop
+    }
+
+
+ break30:
+SplashTextOn, 250, 70, break, 30 second
+ sleep 30000
+  SplashTextOff
+ goto, Loop
+ break60:
+SplashTextOn, 250, 70, break, 60 second
+  sleep 60000
+  SplashTextOff
+ goto, Loop
+
+exit:
+MsgBox, 16, Error, Game is not in Full Screen
+ExitApp
+return
+
+
+
+
+esc::ExitApp
+F4::reload
+return
+
+
+
