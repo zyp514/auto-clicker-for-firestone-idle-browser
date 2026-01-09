@@ -17,7 +17,7 @@ IniRead, Break30, Settings.ini, GUI_Settings, vBreak30,
 IniRead, Break60, Settings.ini, GUI_Settings, vBreak60,
 IniRead, Breakskip, Settings.ini, GUI_Settings, vBreakskip,
 IniRead, longmission, Settings.ini, GUI_Settings, vlongmission,
-
+IniRead, NewSleepValue, settings.ini, GUI_Settings,vNewSleepValue
 
 
 
@@ -68,7 +68,10 @@ Gui,1: Add, Checkbox, x370 y527 w170 h20        vExpedition Checked%Expedition% 
 Gui, 1: Add, Checkbox, x370 y487 w150 h20  vlongmission Checked%longmission%,  Rare Mission First
 
 
-
+Gui, 1: Font,s12
+Gui, Add, Text,  cgreen x10 y105 w240 h20 , Set Global Sleep Duration (ms):
+Gui, 1:Font, s9
+Gui, Add, Edit, x10 y125 w100 h20  vNewSleepValue, %NewSleepValue%
 
 
 
@@ -126,7 +129,7 @@ Gui,1: Submit, NoHide
       IniWrite, %Break60%, settings.ini, GUI_Settings, vBreak60
       IniWrite, %Breakskip%, settings.ini, GUI_Settings, vBreakskip
       IniWrite, %longmission%, settings.ini, GUI_Settings, vlongmission
-
+      IniWrite, %NewSleepValue%, settings.ini, GUI_Settings, vNewSleepValue
 
       MsgBox,4096 ,Save, Settings has been saved, 1
     Return
@@ -263,7 +266,7 @@ town:
     PixelSearch, X, Y, 1808, 152 , 1900, 262, 0x2E3870, 10, Fast RGB
         If (ErrorLevel = 0){
          click 1863, 211
-         sleep 1000
+         sleep %NewSleepValue%
        }
 
 
@@ -285,7 +288,7 @@ guild:
  PixelSearch, X, Y, 1554, 169, 1625, 251, 0xF40000, 5, Fast RGB
     If (ErrorLevel = 0){
 		click 1511, 148
-       sleep 1000
+       sleep %NewSleepValue%
        }else{
         goto, Engineer
       }
@@ -303,7 +306,7 @@ Expeditions:
 PixelSearch, X, Y, 387, 393, 439, 455, 0xF40000, 5, Fast RGB
     If (ErrorLevel = 0) {
 		click 263, 398
-       sleep 500
+       sleep %NewSleepValue%
    }else{
    goto, guildclose
    }
@@ -329,7 +332,7 @@ guildclose:
         If (ErrorLevel = 0){
           Mousemove x, y,5
           click
-          sleep 1000
+          sleep %NewSleepValue%
           }
 
 
@@ -352,24 +355,24 @@ Engineer:
       PixelSearch, X, Y, 1383, 880, 1438, 937  , 0xF40000, 5, Fast RGB
         If (ErrorLevel = 0){
           Click 1255, 802
-          sleep 1000
+          sleep %NewSleepValue%
           }else{
           goto, Campaign
           }
 
       click 561, 535
-      sleep 1000
+      sleep %NewSleepValue%
       click 1611, 725
-      sleep 500
+      sleep %NewSleepValue%
       click 1840, 54
-      sleep 1000
+      sleep %NewSleepValue%
 
  Campaign:
  ;Campaign claim
      PixelSearch, X, Y, 433, 220 , 490, 288 , 0xF40000, 5, Fast RGB
         If (ErrorLevel = 0){
           Click 324, 185
-          sleep 1000
+          sleep %NewSleepValue%
           }else{
           goto, Oracle
           }
@@ -391,7 +394,7 @@ Oracle:
   PixelSearch, X, Y, 1122, 982  , 1172, 1046, 0xF40000, 10, Fast RGB
     If (ErrorLevel = 0){
       click 1017, 924
-      sleep 1000
+      sleep %NewSleepValue%
       }else {
       goto, Alchemist
       }
@@ -405,7 +408,7 @@ Oracle:
 
  rituals:
       click 818, 429
-      sleep 300
+      sleep %NewSleepValue%
    ;Harmoney
       click 1182, 503
       sleep 300
@@ -430,7 +433,7 @@ Oracle:
 Oracleclose:
    ;close
       click 1826, 61
-      sleep 1000
+      sleep %NewSleepValue%
 
 ;Alchemist
 Alchemist:
@@ -438,7 +441,7 @@ Alchemist:
     PixelSearch, X, Y,371, 897 , 537, 936 , 0xFFFFFF, 5, Fast RGB
         If (ErrorLevel = 0){
           click 457, 845
-          sleep 1000
+          sleep %NewSleepValue%
 
           }else{
 
@@ -547,7 +550,7 @@ MsgBox, ,check, checking magic quarter ,0.5
   PixelSearch, X, Y, 645, 217  , 	790, 415, 0xF40000, 5, Fast RGB
     If (ErrorLevel = 0){
       click 626, 276
-      sleep 1000
+      sleep %NewSleepValue%
     }else{
     goto, Libary
     }
@@ -630,7 +633,7 @@ sleep 500
 ;exit
 
 click 1829, 57
-sleep 1000
+sleep %NewSleepValue%
 
 
 
@@ -648,10 +651,10 @@ Libary:
 loop, 3 {
 ;Libary
       click 275, 667
-      sleep 1000
+      sleep %NewSleepValue%
    ;firestone
       click 1807, 637
-      sleep 1000
+      sleep %NewSleepValue%
 
 ;making sure on firestone tree
    PixelSearch, X, Y, 1060, 28,1163, 115 , 0xFDEB95,10, Fast RGB
@@ -4450,14 +4453,14 @@ sleep 100
 label:
 ;leave map
 click 1836, 60
-sleep 1000
+sleep %NewSleepValue%
 
 
 MsgBox, 0, checking , checking if game still in full screen, 1
 
  PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
         If (ErrorLevel = 0){
-          sleep 200
+          sleep %NewSleepValue%
         }else{
         goto, exit
         }
@@ -4582,7 +4585,7 @@ buttonstylepc:
 
 ;Open Upgrades
     click 1422, 963
-    sleep 300
+    sleep %NewSleepValue%
 
 
 
@@ -4620,7 +4623,7 @@ specialUpgradespc:
 
 ;close upgrade
     click 1847, 49
-    sleep 100
+    sleep %NewSleepValue%
 
 
  ;normal with guaridan/spell 3
