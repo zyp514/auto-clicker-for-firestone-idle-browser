@@ -143,6 +143,16 @@ loop:
 {
 Gui,1:hide
 
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
 ;check that game is in full screen if not exit
 MsgBox, 0, checking , checking if game still in full screen, 1
 click 853, 480
@@ -154,9 +164,21 @@ sleep 500
            MsgBox, 0, fullscreen check failed, fullscreen check 1 fail trying again, 1
         goto, fullscreencheck2
       }
+
 ;backup 2  check incase screen turn black for sec
 fullscreencheck2:
+
 sleep 1000
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
  PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
         If (ErrorLevel = 0){
           goto, infullscreen
@@ -167,6 +189,16 @@ sleep 1000
 ;backup 3 check incase screen turn black for sec
 fullscreencheck3:
 sleep 1000
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
  PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
         If (ErrorLevel = 0){
           goto, infullscreen
@@ -174,9 +206,22 @@ sleep 1000
              MsgBox, 0, fullscreen check failed, fullscreen check 3 fail trying again, 1
         goto, fullscreencheck4
       }
+
+
+
       ;backup  4 check incase screen turn black for sec
 fullscreencheck4:
 sleep 1000
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
  PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
         If (ErrorLevel = 0){
           goto, infullscreen

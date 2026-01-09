@@ -143,6 +143,16 @@ loop:
 {
 Gui,1:hide
 
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
 ;check that game is in full screen if not exit
 MsgBox, 0, checking , checking if game still in full screen, 1
 click 853, 480
@@ -154,9 +164,21 @@ sleep 500
            MsgBox, 0, fullscreen check failed, fullscreen check 1 fail trying again, 1
         goto, fullscreencheck2
       }
+
 ;backup 2  check incase screen turn black for sec
 fullscreencheck2:
+
 sleep 1000
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
  PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
         If (ErrorLevel = 0){
           goto, infullscreen
@@ -167,6 +189,16 @@ sleep 1000
 ;backup 3 check incase screen turn black for sec
 fullscreencheck3:
 sleep 1000
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
  PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
         If (ErrorLevel = 0){
           goto, infullscreen
@@ -174,9 +206,22 @@ sleep 1000
              MsgBox, 0, fullscreen check failed, fullscreen check 3 fail trying again, 1
         goto, fullscreencheck4
       }
+
+
+
       ;backup  4 check incase screen turn black for sec
 fullscreencheck4:
 sleep 1000
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1798, 56
+      sleep 300
+      click 1782, 129
+      sleep 300
+      click 1782, 129
+      sleep 300
  PixelSearch, X, Y, 1548, 23 ,  1601, 82  , 0xFDED35,10, Fast RGB
         If (ErrorLevel = 0){
           goto, infullscreen
@@ -218,7 +263,7 @@ town:
     PixelSearch, X, Y, 1808, 152 , 1900, 262, 0x2E3870, 10, Fast RGB
         If (ErrorLevel = 0){
          click 1863, 211
-         sleep 500
+         sleep 1000
        }
 
 
@@ -240,7 +285,7 @@ guild:
  PixelSearch, X, Y, 1554, 169, 1625, 251, 0xF40000, 5, Fast RGB
     If (ErrorLevel = 0){
 		click 1511, 148
-       sleep 500
+       sleep 1000
        }else{
         goto, Engineer
       }
@@ -284,7 +329,7 @@ guildclose:
         If (ErrorLevel = 0){
           Mousemove x, y,5
           click
-          sleep 500
+          sleep 1000
           }
 
 
@@ -307,24 +352,24 @@ Engineer:
       PixelSearch, X, Y, 1383, 880, 1438, 937  , 0xF40000, 5, Fast RGB
         If (ErrorLevel = 0){
           Click 1255, 802
-          sleep 500
+          sleep 1000
           }else{
           goto, Campaign
           }
 
       click 561, 535
-      sleep 500
+      sleep 1000
       click 1611, 725
       sleep 500
       click 1840, 54
-      sleep 500
+      sleep 1000
 
  Campaign:
  ;Campaign claim
      PixelSearch, X, Y, 433, 220 , 490, 288 , 0xF40000, 5, Fast RGB
         If (ErrorLevel = 0){
           Click 324, 185
-          sleep 300
+          sleep 1000
           }else{
           goto, Oracle
           }
@@ -346,7 +391,7 @@ Oracle:
   PixelSearch, X, Y, 1122, 982  , 1172, 1046, 0xF40000, 10, Fast RGB
     If (ErrorLevel = 0){
       click 1017, 924
-      sleep 300
+      sleep 1000
       }else {
       goto, Alchemist
       }
@@ -385,7 +430,7 @@ Oracle:
 Oracleclose:
    ;close
       click 1826, 61
-      sleep 300
+      sleep 1000
 
 ;Alchemist
 Alchemist:
@@ -393,7 +438,7 @@ Alchemist:
     PixelSearch, X, Y,371, 897 , 537, 936 , 0xFFFFFF, 5, Fast RGB
         If (ErrorLevel = 0){
           click 457, 845
-          sleep 300
+          sleep 1000
 
           }else{
 
@@ -483,7 +528,7 @@ goto, exitAlchemist
 exitAlchemist:
    ;close
       click 1826, 75
-      sleep 300
+      sleep 1000
 
       MsgBox, ,check, making sure autoclicker not stuck, 0.5
 
@@ -502,7 +547,7 @@ MsgBox, ,check, checking magic quarter ,0.5
   PixelSearch, X, Y, 645, 217  , 	790, 415, 0xF40000, 5, Fast RGB
     If (ErrorLevel = 0){
       click 626, 276
-      sleep 500
+      sleep 1000
     }else{
     goto, Libary
     }
@@ -585,7 +630,7 @@ sleep 500
 ;exit
 
 click 1829, 57
-sleep 500
+sleep 1000
 
 
 
@@ -603,10 +648,10 @@ Libary:
 loop, 3 {
 ;Libary
       click 275, 667
-      sleep 500
+      sleep 1000
    ;firestone
       click 1807, 637
-      sleep 500
+      sleep 1000
 
 ;making sure on firestone tree
    PixelSearch, X, Y, 1060, 28,1163, 115 , 0xFDEB95,10, Fast RGB
@@ -1287,11 +1332,11 @@ Closetown:
 
 ;Close town
       click 1800, 59
-      sleep 500
+      sleep 1000
       click 1800, 59
-      sleep 500
+      sleep 1000
       click 1800, 59
-      sleep 500
+      sleep 1000
 
 
 
@@ -4405,7 +4450,7 @@ sleep 100
 label:
 ;leave map
 click 1836, 60
-sleep 300
+sleep 1000
 
 
 MsgBox, 0, checking , checking if game still in full screen, 1
